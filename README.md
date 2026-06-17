@@ -65,7 +65,8 @@ Install requirements:
 
 ```bash
 pip install -r requirements.txt
-MAX_JOBS=4 pip install flash-attn==2.7.4.post1 --no-build-isolation
+export FLASH_ATTN_CUDA_ARCHS=$(python -c 'import torch; print(f"{torch.cuda.get_device_capability()[0]}{torch.cuda.get_device_capability()[1]}")')
+MAX_JOBS=4 pip install flash-attn==2.8.3 --no-build-isolation
 ```
 
 Install DMuon, which is used by the default training configs:
